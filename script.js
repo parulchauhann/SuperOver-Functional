@@ -5,6 +5,8 @@ const $team2score = document.getElementById("score-team2")
 const $team2wickets = document.getElementById("wickets-team2")
 const resetbutton = document.getElementById("reset")
 const strikebutton = document.getElementById("strike")
+const strike = new Audio("https://i1.faceprep.in/prograd-junior/bat%2Bhit%2Bball.mp3")
+const crowd_cheers= new Audio("https://i1.faceprep.in/prograd-junior/Ball%2BHit%2BCheer.mp3")
 
 var team1score = 0
 var team2score = 0
@@ -14,6 +16,7 @@ var turn = 1 // use of turn to go from one scoreboard to another scoreboard
 var ballfaced = 0
 
 function finished() {
+    crowd_cheers.play();
     // Use of alert to declare the result on the webpage
     if (team1score > team2score) alert("India wins");
     if (team1score < team2score) alert("Pakistan wins");
@@ -23,9 +26,12 @@ function finished() {
 // use of array to store collections of data 
 const possibleoutcomes = [0,1,2,3,4,5,6,"W"]
 
+
 // use of Math.floor[Math.random*length]
 //event listener is when you click on something, then only it changes
 strikebutton.onclick= () => {
+    strike.play();
+
     ballfaced++;
     
     if (turn == 1) {
